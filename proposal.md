@@ -1,5 +1,7 @@
 1. Authors — list the names of everyone part of producing the project.
 
+Ziyuan Cai, Zhenzhao Xu
+
 1. Abstract — a paragraph description of the problem/situation/domain/etc. The Abstract should clearly state the types of decisions that your dashboard is going to help facilitate.
 
 1. List of data sources you intend to use for this project. For each data source, please list:
