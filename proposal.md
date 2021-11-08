@@ -4,9 +4,14 @@
 
 1. Abstract — a paragraph description of the problem/situation/domain/etc. The Abstract should clearly state the types of decisions that your dashboard is going to help facilitate.
 
-    Why is it important?
+    **Why is it important?**
 
-    Types of decisions that out dashboard is going to help facilitate.
+    https://eos.org/features/growing-equity-in-city-green-space
+
+    > "In most studies there’s a demonstrated pattern between income and urban forest cover; that is, higher income is associated with more urban forest cover"
+
+    **Types of decisions that out dashboard is going to help facilitate.**
+
 
 
 1. List of data sources you intend to use for this project. For each data source, please list:
@@ -31,7 +36,7 @@
 
     - Euqality (Race)
 
-    - Pollution (Air/water)
+    - (?) Pollution (Air/water)
 
 
 
