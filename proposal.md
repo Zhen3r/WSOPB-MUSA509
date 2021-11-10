@@ -6,9 +6,20 @@
 
     **Why is it important?**
 
-    https://eos.org/features/growing-equity-in-city-green-space
+    1. Inequality
+        https://eos.org/features/growing-equity-in-city-green-space
 
-    > "In most studies there’s a demonstrated pattern between income and urban forest cover; that is, higher income is associated with more urban forest cover"
+        > "In most studies there’s a demonstrated pattern between income and urban forest cover; that is, higher income is associated with more urban forest cover"
+        
+    1. Climate
+
+        > Some Philly neighborhoods can be up to 20 degrees hotter than others during the summer months, thanks to a lack of tree canopy coverage, or what’s known as the “urban heat island” effect.
+
+    1. Underfunded
+
+        The Parks and Recreation budget was cut by 20% during the last fiscal year, equating to about $12.5 million, and more cuts are being considered over the coming weeks during the next budget cycle.
+        
+    1. Hard to 
 
     **Types of decisions that out dashboard is going to help facilitate.**
 
@@ -26,17 +37,23 @@
 
     - Park boundaries of Philly (Link)[https://www.opendataphilly.org/dataset/ppr-properties] (Api Endpoint)[https://opendata.arcgis.com/datasets/d52445160ab14380a673e5849203eb64_0.geojson]
 
-    - (?) (Land Cover Raster)[https://www.opendataphilly.org/dataset/philadelphia-land-cover-raster]
+    - Euqality: 
+    
+        - Race, Income: ACS block group
 
-    - (?) Landsat data - NDVI & temperature
+        - Accessibility: Transportation (bus, subway, bike)
 
-    - Flood plain (100y Link)[https://metadata.phila.gov/#home/representationdetails/56ccbad74d934cea1ef05c20/], (500y)[https://metadata.phila.gov/#home/representationdetails/56ccbb1df041bd4d03549350/]
+    - Ecology:
 
-    - Zoning (Link)[] - relevant to the construction cost of park?
+        - Temperature : (Heat Island) Landsat data - NDVI & temperature 
 
-    - Euqality (Race)
+        - Flood: Flood plain (100y Link)[https://metadata.phila.gov/#home/representationdetails/56ccbad74d934cea1ef05c20/], (500y)[https://metadata.phila.gov/#home/representationdetails/56ccbb1df041bd4d03549350/], (contours)[https://www.opendataphilly.org/dataset/topographic-contours], (Flood Hazard Zone)[https://www.opendataphilly.org/dataset/flood-hazard-zone-lines/resource/85d4503f-ecfc-4c26-ba45-2506755cab53]
 
-    - (?) Pollution (Air/water)
+        - (?) Pollution (Air/water)
+
+    - Economy:
+
+        - cost: (Zoning)[], (Land Cover Raster)[https://www.opendataphilly.org/dataset/philadelphia-land-cover-raster] - relevant to the construction cost of park?
 
 
 
