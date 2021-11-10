@@ -9,7 +9,8 @@
     1. Inequality
         https://eos.org/features/growing-equity-in-city-green-space, 
         https://www.phillymag.com/news/2021/05/27/parks-philadelphia-equity-report/,
-        https://www.inquirer.com/opinion/commentary/philadelphia-parks-and-rec-budget-cuts-20210323.html
+        https://www.inquirer.com/opinion/commentary/philadelphia-parks-and-rec-budget-cuts-20210323.html,
+        https://www.tpl.org/city/philadelphia-pennsylvania
 
         > "In most studies there’s a demonstrated pattern between income and urban forest cover; that is, higher income is associated with more urban forest cover"
         
@@ -55,9 +56,11 @@
 
     - Economy:
 
-        - cost: (Zoning)[], (Land Cover Raster)[https://www.opendataphilly.org/dataset/philadelphia-land-cover-raster] - relevant to the construction cost of park?
+        - cost: (Buildings)[https://www.opendataphilly.org/dataset/buildings], (Land Cover Raster)[https://www.opendataphilly.org/dataset/philadelphia-land-cover-raster] - relevant to the construction cost of park? (OPA)[https://www.opendataphilly.org/dataset/opa-property-assessments]
 
-
-
+dvrpc, 
+telemetry,
+usgs,
+guray.erus@pennmedicine.upenn.edu
 
 1. Wireframes of the webpage(s) for your project. This of a wireframe as an outline for an interactive project. It allows you to quickly communicate the general makeup and organization of the dashboard content. See this page for guidance on creating wireframes. Hand-drawn or digital are both acceptable, but please scan or take pictures of the hand-drawn ones for inclusion in the repo. Link the images in the proposal markdown. Interactive wireframes are acceptable too. Many free and paid tools exist for creating wireframes (Adobe Wireframe XD, MockFlow, Figma, etc.)
