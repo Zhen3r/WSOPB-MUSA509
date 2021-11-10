@@ -7,7 +7,9 @@
     **Why is it important?**
 
     1. Inequality
-        https://eos.org/features/growing-equity-in-city-green-space
+        https://eos.org/features/growing-equity-in-city-green-space, 
+        https://www.phillymag.com/news/2021/05/27/parks-philadelphia-equity-report/,
+        https://www.inquirer.com/opinion/commentary/philadelphia-parks-and-rec-budget-cuts-20210323.html
 
         > "In most studies there’s a demonstrated pattern between income and urban forest cover; that is, higher income is associated with more urban forest cover"
         
@@ -18,8 +20,8 @@
     1. Underfunded
 
         The Parks and Recreation budget was cut by 20% during the last fiscal year, equating to about $12.5 million, and more cuts are being considered over the coming weeks during the next budget cycle.
-        
-    1. Hard to 
+
+    1. Difficulty of planning
 
     **Types of decisions that out dashboard is going to help facilitate.**
 
