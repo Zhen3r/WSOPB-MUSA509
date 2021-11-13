@@ -2,7 +2,7 @@
 
     Ziyuan Cai, Zhenzhao Xu
 
-1. Abstract — a paragraph description of the problem/situation/domain/etc. The Abstract should clearly state the types of decisions that your dashboard is going to help facilitate.
+2. Abstract — a paragraph description of the problem/situation/domain/etc. The Abstract should clearly state the types of decisions that your dashboard is going to help facilitate.
 
     **Why is it important?**
 
@@ -14,27 +14,27 @@
 
         > "In most studies there’s a demonstrated pattern between income and urban forest cover; that is, higher income is associated with more urban forest cover"
         
-    1. Climate
+    2. Climate
 
         > Some Philly neighborhoods can be up to 20 degrees hotter than others during the summer months, thanks to a lack of tree canopy coverage, or what’s known as the “urban heat island” effect.
 
-    1. Underfunded
+    3. Underfunded
 
         The Parks and Recreation budget was cut by 20% during the last fiscal year, equating to about $12.5 million, and more cuts are being considered over the coming weeks during the next budget cycle.
 
-    1. Difficulty of planning
+    4. Difficulty of planning
 
     **Types of decisions that out dashboard is going to help facilitate.**
 
 
 
-1. List of data sources you intend to use for this project. For each data source, please list:
+3. List of data sources you intend to use for this project. For each data source, please list:
 
     1. Where you can get access to the dataset (e.g., a URL, government agency, third-party API, BigQuery public dataset, etc.)
 
-    1. Size of dataset (if applicable)
+    2. Size of dataset (of applicable)
 
-    1. Whether you currently have access to this data
+    3. Whether you currently have access to this data
 
     **data sources**
 
