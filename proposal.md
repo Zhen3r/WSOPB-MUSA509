@@ -19,7 +19,7 @@ In this project, three aspects of current situations are discussed and rational 
     How does race or income factors affect area of green spaces? 
     
     Are there any spatial relationships in them?
-        
+    
 1. **Ecology**
 
     Is the effect of Urban Heat Island obvious? to what extent? 
@@ -43,17 +43,19 @@ In this project, three aspects of current situations are discussed and rational 
 
 ## Data
 
-| Category |     Source     |            Name            |                                                                                                                                                                                              Url                                                                                                                                                                                               | Geometry Type | Size | Update Frequency |
-| :------: | :------------: | :------------------------: | :--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------: | :-----------: | :--: | :--------------: |
-| Equality |      ACS       | Race/Income by block group |                                                                                                                                                           [ACS2019](https://www.census.gov/data/developers/data-sets/acs-5year.html)                                                                                                                                                           |    Polygon    |      |     as need      |
-| Equality | OpendataPhilly |       Park Boundary        |                                                                                                            [OpenDataPhilly](https://www.opendataphilly.org/dataset/ppr-properties), [Api Endpoint](https://opendata.arcgis.com/datasets/d52445160ab14380a673e5849203eb64_0.geojson)                                                                                                            |    Polygon    |      |      weekly      |
+| Category |     Source     |            Name            |                             Url                              | Geometry Type | Size | Update Frequency |
+| :------: | :------------: | :------------------------: | :----------------------------------------------------------: | :-----------: | :--: | :--------------: |
+| Equality |      ACS       | Race/Income by block group | [ACS2019](https://www.census.gov/data/developers/data-sets/acs-5year.html) |    Polygon    |      |     as need      |
+| Equality | OpendataPhilly |       Park Boundary        | [OpenDataPhilly](https://www.opendataphilly.org/dataset/ppr-properties), [Api Endpoint](https://opendata.arcgis.com/datasets/d52445160ab14380a673e5849203eb64_0.geojson) |    Polygon    |      |      weekly      |
 | Ecology  | OpendataPhilly |           Flood            | [100y](https://metadata.phila.gov/#home/representationdetails/56ccbad74d934cea1ef05c20/), [500y](https://metadata.phila.gov/#home/representationdetails/56ccbb1df041bd4d03549350/), [contours](https://www.opendataphilly.org/dataset/topographic-contours), [Flood Hazard Zone](https://www.opendataphilly.org/dataset/flood-hazard-zone-lines/resource/85d4503f-ecfc-4c26-ba45-2506755cab53) |    Polygon    |      |     one time     |
-| Ecology  |      USGS      |    Surface Temperature     |                                                                                                                  [USGS](https://www.usgs.gov/core-science-systems/nli/landsat/landsat-data-access?qt-science_support_page_related_con=0#qt-science_support_page_related_con)                                                                                                                   |    Raster     |      |      yearly      |
-| Economy  | OpendataPhilly |         Land Value         |                                                                                                                                                             [OPA](https://www.opendataphilly.org/dataset/opa-property-assessments)                                                                                                                                                             |    Polygon    |      |      yearly      |
-| Economy  | OpendataPhilly |         Buildings          |                                                                                                                                                               [OpendataPhilly](https://www.opendataphilly.org/dataset/buildings)                                                                                                                                                               |    Polygon    |      |      yearly      |
-| Economy  | OpendataPhilly |         Land Cover         |                                                                                                                                                   [Land Cover Raster](https://www.opendataphilly.org/dataset/philadelphia-land-cover-raster)                                                                                                                                                   |    Polygon    |      |      yearly      |
+| Ecology  |      USGS      |    Surface Temperature     | [USGS](https://www.usgs.gov/core-science-systems/nli/landsat/landsat-data-access?qt-science_support_page_related_con=0#qt-science_support_page_related_con) |    Raster     |      |      yearly      |
+| Economy  | OpendataPhilly |         Land Value         | [OPA](https://www.opendataphilly.org/dataset/opa-property-assessments) |    Polygon    |      |      yearly      |
+| Economy  | OpendataPhilly |         Buildings          | [OpendataPhilly](https://www.opendataphilly.org/dataset/buildings) |    Polygon    |      |      yearly      |
+| Economy  | OpendataPhilly |         Land Cover         | [Land Cover Raster](https://www.opendataphilly.org/dataset/philadelphia-land-cover-raster) |    Raster     |      |      yearly      |
 
 ## Wireframes 
+
+* ![](./pic/web-design-509.png)
 
 * [Sketches](https://docs.google.com/presentation/d/1Y0M4FNZb5tpQm4QnBYiDKPy0F1HD9FtDx_t1gVQYYJY/edit#slide=id.g10178e42f57_0_16)
 
