@@ -6,7 +6,7 @@ Ziyuan Cai, Zhenzhao Xu
 
 ## Abstract
 
-As the COVID-19 stretched into end of 2020, people in Philadelphia began to flock to outdoor green spaces in and around the city. A report from the [Trust for Public Land](https://www.tpl.org/city/philadelphia-pennsylvania) finds that although green spaces in Philadelphia is accessible to most citizens, **the amont of green spaces varies greatly based on income and race**. And according to [Inquirer](https://www.inquirer.com/science/climate/philadelphia-heat-island-climate-change-hunting-park-20190724.html), some Philly neighborhoods can be up to 20°F (6.7°C) hotter than others during the summer months due to Urban Heat Island Effect. Besides, the drainage problem of the flood has almost become a worrying problem in Philadelphia. Moreover, Philadelphia Parks and Recreation budget was cut by 20% during the last fiscal year, equating to about $12.5 million, which means that **the budget on new green spaces is limited**.
+As the COVID-19 stretched into end of 2020, people in Philadelphia began to flock to outdoor green spaces in and around the city. A report from the [Trust for Public Land](https://www.tpl.org/city/philadelphia-pennsylvania) finds that although green spaces in Philadelphia is accessible to most citizens, **the amont of green spaces varies greatly based on income and race**. And according to [Inquirer](https://www.inquirer.com/science/climate/philadelphia-heat-island-climate-change-hunting-park-20190724.html), some Philly neighborhoods can be up to 20°F (6.7°C) hotter than others during the summer months due to Urban Heat Island Effect. The drainage problem of the flood has also become a worrying problem in Philadelphia. Moreover, Philadelphia Parks and Recreation budget was cut by 20% during the last fiscal year, equating to about $12.5 million, which means that **the budget on new green spaces is limited**.
 
 Therefore, it is particularly important for planners of Philadelphia Parks and Recreation to determine the best locations for new green spaces effectively so that green spaces can be more equitable and also do some goods to the city environment. This project is a toolkit built for this scenario that helps planners to answer following questuions: Is the location of current green spaces reasonable? If we want to build a new park, where is our best location? How do the pubilc involves in it?
 
@@ -14,17 +14,27 @@ In this project, three aspects of current situations are discussed and rational 
 
 1. **Equality**
 
-    Whether there is a correlation between race, income and current city green spaces accessiblity. How does race or income factors affect area of green spaces? Are there any spatial relationships in them?
+    Whether there is a correlation between race, income and current city green spaces accessiblity. 
+    
+    How does race or income factors affect area of green spaces? 
+    
+    Are there any spatial relationships in them?
         
 1. **Ecology**
 
-    Is the effect of Urban Heat Island obvious? to what extent? Is there a relationship between green spaces and 
+    Is the effect of Urban Heat Island obvious? to what extent? 
     
-    The green vegetation coverage of the green spaces can improve the situation.
+    Is there a relationship between green spaces and Urban Heat Island?
+
+    Where do we build parks to counteract this effect?
 
 1. **Economy**
 
-    If a park is to be built, what is the current use of this land? Will it be expensive to build a park on it? What is the land value? Is it the best location financially? 
+    If a park is to be built, what is the current use of this land? 
+    
+    Will it be expensive to build a park on it? What is the land value? 
+    
+    Is it the best location financially? 
 
 ## Stakeholders
 
