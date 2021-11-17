@@ -1,55 +1,44 @@
-1. Authors — list the names of everyone part of producing the project.
+# Proposal
 
-    Ziyuan Cai, Zhenzhao Xu
+## Authors
 
-2. Abstract — a paragraph description of the problem/situation/domain/etc. The Abstract should clearly state the types of decisions that your dashboard is going to help facilitate.
+Ziyuan Cai, Zhenzhao Xu
 
-    **Why is it important?**
+## Abstract
 
-    1. Inequality
-        https://eos.org/features/growing-equity-in-city-green-space, 
-        https://www.phillymag.com/news/2021/05/27/parks-philadelphia-equity-report/,
-        https://www.inquirer.com/opinion/commentary/philadelphia-parks-and-rec-budget-cuts-20210323.html,
-        https://www.tpl.org/city/philadelphia-pennsylvania
+Infrastructure has always been a heated topic of discussion among people. Citizens care about infrastructure because it is closely related to their lives, while, politicians and city managers, on the other hand care about infrastructure because it affects their political performance and support rate. Therefore, it is particularly significant to select the location of large-scale infrastructure such as parks that not only have social attributes but also environmental attributes. Is the address of the park at this stage reasonable? If we want to build a new park, where is our best location?
 
-        > "In most studies there’s a demonstrated pattern between income and urban forest cover; that is, higher income is associated with more urban forest cover"
+We will consider the location of the park from three aspects.
+* Equality
+
+    > In most studies there’s a demonstrated pattern between race and income and city green space. So race and income are the key points for us to consider equality.
         
-    2. Climate
+* Ecology
 
-        > Some Philly neighborhoods can be up to 20 degrees hotter than others during the summer months, thanks to a lack of tree canopy coverage, or what’s known as the “urban heat island” effect.
+    > Some Philly neighborhoods can be up to 20 degrees hotter than others during the summer months, thanks to the urban heat island effect. Besides, the drainage problem of the flood has almost become a regular issue in Philadelphia. The green vegetation coverage of the parks can improve the situation.
 
-    3. Underfunded
+* Economy
 
-        The Parks and Recreation budget was cut by 20% during the last fiscal year, equating to about $12.5 million, and more cuts are being considered over the coming weeks during the next budget cycle.
+    > The inevitable problem in the construction of a park is cost. We will calculate the land value in Philadelphia based on land use and give a rough cost range.
 
-    4. Difficulty of planning
+## Stakeholders
 
-    **Types of decisions that out dashboard is going to help facilitate.**
+* City planners who want to improve people’s lives and increase greenery in Philadelphia.
+* Neighborhoods that has a great demand for parks but cannot be satisfied.
 
-
-
-3. List of data sources you intend to use for this project. For each data source, please list:
-
-    1. Where you can get access to the dataset (e.g., a URL, government agency, third-party API, BigQuery public dataset, etc.)
-
-    2. Size of dataset (of applicable)
-
-    3. Whether you currently have access to this data
-
-    **data sources**
+## Data
 
     | Category |     Source     |            Name            |                             Url                              | Geometry Type | Size | Update Frequency |
     | :------: | :------------: | :------------------------: | :----------------------------------------------------------: | :-----------: | :--: | :--------------: |
     | Equality |      ACS       | Race/Income by block group | [ACS2019](https://www.census.gov/data/developers/data-sets/acs-5year.html) |    Polygon    |      |     as need      |
     | Equality | OpendataPhilly |       Park Boundary        | [OpenDataPhilly](https://www.opendataphilly.org/dataset/ppr-properties), [Api Endpoint](https://opendata.arcgis.com/datasets/d52445160ab14380a673e5849203eb64_0.geojson) |    Polygon    |      |      weekly      |
-    | Ecology  | OpendataPhilly |           Flood            | [100y](https://metadata.phila.gov/#home/representationdetails/56ccbad74d934cea1ef05c20/), [500y](https://metadata.phila.gov/#home/representationdetails/56ccbb1df041bd4d03549350/), [contours](https://www.opendataphilly.org/dataset/topographic-contours), [Flood Hazard Zone](https://www.opendataphilly.org/dataset/flood-hazard-zone-lines/resource/85d4503f-ecfc-4c26-ba45-2506755cab53) |    Polygon    |      |                  |
-    | Ecology  |      USGS      |    Surface Temperature     | [USGS](https://www.usgs.gov/core-science-systems/nli/landsat/landsat-data-access?qt-science_support_page_related_con=0#qt-science_support_page_related_con ) |    Polygon    |      |                  |
-    | Economy  | OpendataPhilly |         Land Value         | [OPA](https://www.opendataphilly.org/dataset/opa-property-assessments) |    Polygon    |      |                  |
-    | Economy  | OpendataPhilly |         Buildings          | [OpendataPhilly](https://www.opendataphilly.org/dataset/buildings) |    Polygon    |      |                  |
-    | Economy  | OpendataPhilly |         Land Cover         | [Land Cover Raster](https://www.opendataphilly.org/dataset/philadelphia-land-cover-raster) |    Polygon    |      |                  |
+    | Ecology  | OpendataPhilly |           Flood            | [100y](https://metadata.phila.gov/#home/representationdetails/56ccbad74d934cea1ef05c20/), [500y](https://metadata.phila.gov/#home/representationdetails/56ccbb1df041bd4d03549350/), [contours](https://www.opendataphilly.org/dataset/topographic-contours), [Flood Hazard Zone](https://www.opendataphilly.org/dataset/flood-hazard-zone-lines/resource/85d4503f-ecfc-4c26-ba45-2506755cab53) |    Polygon    |      |     one time     |
+    | Ecology  |      USGS      |    Surface Temperature     | [USGS](https://www.usgs.gov/core-science-systems/nli/landsat/landsat-data-access?qt-science_support_page_related_con=0#qt-science_support_page_related_con ) |    Polygon    |      |      yearly      |
+    | Economy  | OpendataPhilly |         Land Value         | [OPA](https://www.opendataphilly.org/dataset/opa-property-assessments) |    Polygon    |      |      yearly      |
+    | Economy  | OpendataPhilly |         Buildings          | [OpendataPhilly](https://www.opendataphilly.org/dataset/buildings), [Temperature](https://earthexplorer.usgs.gov/scene/metadata/full/5e83d14f2fc39685/LC80140322021270LGN00/) |    Polygon    |      |      yearly      |
+    | Economy  | OpendataPhilly |         Land Cover         | [Land Cover Raster](https://www.opendataphilly.org/dataset/philadelphia-land-cover-raster) |    Polygon    |      |      yearly      |
 
-dvrpc, telemetry, usgs
-guray.erus@pennmedicine.upenn.edu
+## Wireframes 
 
-1. Wireframes of the webpage(s) for your project. This of a wireframe as an outline for an interactive project. It allows you to quickly communicate the general makeup and organization of the dashboard content. See this page for guidance on creating wireframes. Hand-drawn or digital are both acceptable, but please scan or take pictures of the hand-drawn ones for inclusion in the repo. Link the images in the proposal markdown. Interactive wireframes are acceptable too. Many free and paid tools exist for creating wireframes (Adobe Wireframe XD, MockFlow, Figma, etc.)
+* [Sketches](https://docs.google.com/presentation/d/1Y0M4FNZb5tpQm4QnBYiDKPy0F1HD9FtDx_t1gVQYYJY/edit#slide=id.g10178e42f57_0_16)
 
