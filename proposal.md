@@ -35,7 +35,7 @@ We will consider the location of the park from three aspects.
     | Ecology  | OpendataPhilly |           Flood            | [100y](https://metadata.phila.gov/#home/representationdetails/56ccbad74d934cea1ef05c20/), [500y](https://metadata.phila.gov/#home/representationdetails/56ccbb1df041bd4d03549350/), [contours](https://www.opendataphilly.org/dataset/topographic-contours), [Flood Hazard Zone](https://www.opendataphilly.org/dataset/flood-hazard-zone-lines/resource/85d4503f-ecfc-4c26-ba45-2506755cab53) |    Polygon    |      |     one time     |
     | Ecology  |      USGS      |    Surface Temperature     | [USGS](https://www.usgs.gov/core-science-systems/nli/landsat/landsat-data-access?qt-science_support_page_related_con=0#qt-science_support_page_related_con ) |    Polygon    |      |      yearly      |
     | Economy  | OpendataPhilly |         Land Value         | [OPA](https://www.opendataphilly.org/dataset/opa-property-assessments) |    Polygon    |      |      yearly      |
-    | Economy  | OpendataPhilly |         Buildings          | [OpendataPhilly](https://www.opendataphilly.org/dataset/buildings), [Temperature](https://earthexplorer.usgs.gov/scene/metadata/full/5e83d14f2fc39685/LC80140322021270LGN00/) |    Polygon    |      |      yearly      |
+    | Economy  | OpendataPhilly |         Buildings          | [OpendataPhilly](https://www.opendataphilly.org/dataset/buildings) |    Polygon    |      |      yearly      |
     | Economy  | OpendataPhilly |         Land Cover         | [Land Cover Raster](https://www.opendataphilly.org/dataset/philadelphia-land-cover-raster) |    Polygon    |      |      yearly      |
 
 ## Wireframes 
