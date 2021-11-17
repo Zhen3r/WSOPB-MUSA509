@@ -6,25 +6,30 @@ Ziyuan Cai, Zhenzhao Xu
 
 ## Abstract
 
-Infrastructure has always been a heated topic of discussion among people. Citizens care about infrastructure because it is closely related to their lives, while, politicians and city managers, on the other hand care about infrastructure because it affects their political performance and support rate. Therefore, it is particularly significant to select the location of large-scale infrastructure such as parks that not only have social attributes but also environmental attributes. Is the address of the park at this stage reasonable? If we want to build a new park, where is our best location?
+As the COVID-19 stretched into end of 2020, people in Philadelphia began to flock to outdoor green spaces in and around the city. A report from the [Trust for Public Land](https://www.tpl.org/city/philadelphia-pennsylvania) finds that although green spaces in Philadelphia is accessible to most citizens, **the amont of green spaces varies greatly based on income and race**. And according to [Inquirer](https://www.inquirer.com/science/climate/philadelphia-heat-island-climate-change-hunting-park-20190724.html), some Philly neighborhoods can be up to 20°F (6.7°C) hotter than others during the summer months due to Urban Heat Island Effect. Besides, the drainage problem of the flood has almost become a worrying problem in Philadelphia. Moreover, Philadelphia Parks and Recreation budget was cut by 20% during the last fiscal year, equating to about $12.5 million, which means that **the budget on new green spaces is limited**.
 
-We will consider the location of the park from three aspects.
-* Equality
+Therefore, it is particularly important for planners of Philadelphia Parks and Recreation to determine the best locations for new green spaces effectively so that green spaces can be more equitable and also do some goods to the city environment. This project is a toolkit built for this scenario that helps planners to answer following questuions: Is the location of current green spaces reasonable? If we want to build a new park, where is our best location? How do the pubilc involves in it?
 
-    > In most studies there’s a demonstrated pattern between race and income and city green space. So race and income are the key points for us to consider equality.
+In this project, three aspects of current situations are discussed and rational locations of green spaces are predicted by algorithm.
+
+1. **Equality**
+
+    Whether there is a correlation between race, income and current city green spaces accessiblity. How does race or income factors affect area of green spaces? Are there any spatial relationships in them?
         
-* Ecology
+1. **Ecology**
 
-    > Some Philly neighborhoods can be up to 20 degrees hotter than others during the summer months, thanks to the urban heat island effect. Besides, the drainage problem of the flood has almost become a regular issue in Philadelphia. The green vegetation coverage of the parks can improve the situation.
+    Is the effect of Urban Heat Island obvious? to what extent? Is there a relationship between green spaces and 
+    
+    The green vegetation coverage of the green spaces can improve the situation.
 
-* Economy
+1. **Economy**
 
-    > The inevitable problem in the construction of a park is cost. We will calculate the land value in Philadelphia based on land use and give a rough cost range.
+    If a park is to be built, what is the current use of this land? Will it be expensive to build a park on it? What is the land value? Is it the best location financially? 
 
 ## Stakeholders
 
 * City planners who want to improve people’s lives and increase greenery in Philadelphia.
-* Neighborhoods that has a great demand for parks but cannot be satisfied.
+* (To be discussed) Neighborhoods that has a great demand for parks but cannot be satisfied.
 
 ## Data
 
@@ -42,3 +47,9 @@ We will consider the location of the park from three aspects.
 
 * [Sketches](https://docs.google.com/presentation/d/1Y0M4FNZb5tpQm4QnBYiDKPy0F1HD9FtDx_t1gVQYYJY/edit#slide=id.g10178e42f57_0_16)
 
+## Related Links
+
+- https://eos.org/features/growing-equity-in-city-green-space
+- https://www.phillymag.com/news/2021/05/27/parks-philadelphia-equity-report/
+- https://www.inquirer.com/opinion/commentary/philadelphia-parks-and-rec-budget-cuts-20210323.html
+- https://www.tpl.org/city/philadelphia-pennsylvania
