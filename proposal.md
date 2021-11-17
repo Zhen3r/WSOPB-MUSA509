@@ -28,8 +28,8 @@ We will consider the location of the park from three aspects.
 
 ## Data
 
-    | Category |     Source     |            Name            |                             Url                              | Geometry Type | Size | Update Frequency |
-    | :------: | :------------: | :------------------------: | :----------------------------------------------------------: | :-----------: | :--: | :--------------: |
+    | Category |     Source     |            Name            |                             Url                              | Geometry Type | Update Frequency |
+    | :------: | :------------: | :------------------------: | :----------------------------------------------------------: | :-----------: | :--------------: |
     | Equality |      ACS       | Race/Income by block group | [ACS2019](https://www.census.gov/data/developers/data-sets/acs-5year.html) |    Polygon    |     as need      |
     | Equality | OpendataPhilly |       Park Boundary        | [OpenDataPhilly](https://www.opendataphilly.org/dataset/ppr-properties), [Api Endpoint](https://opendata.arcgis.com/datasets/d52445160ab14380a673e5849203eb64_0.geojson) |    Polygon    |      weekly      |
     | Ecology  | OpendataPhilly |           Flood            | [100y](https://metadata.phila.gov/#home/representationdetails/56ccbad74d934cea1ef05c20/), [500y](https://metadata.phila.gov/#home/representationdetails/56ccbb1df041bd4d03549350/), [contours](https://www.opendataphilly.org/dataset/topographic-contours), [Flood Hazard Zone](https://www.opendataphilly.org/dataset/flood-hazard-zone-lines/resource/85d4503f-ecfc-4c26-ba45-2506755cab53) |    Polygon    |     one time     |
