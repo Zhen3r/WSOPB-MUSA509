@@ -55,7 +55,7 @@ In this project, three aspects of current situations are discussed and rational 
 
 ## Wireframes 
 
-* ![](./pic/web-design-509.png)
+![](./pic/web-design-509.png)
 
 * [Sketches](https://docs.google.com/presentation/d/1Y0M4FNZb5tpQm4QnBYiDKPy0F1HD9FtDx_t1gVQYYJY/edit#slide=id.g10178e42f57_0_16)
 
