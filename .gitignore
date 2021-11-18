@@ -1,5 +1,5 @@
 .vscode
 .ipynb_checkpoints
-*.indd
-*.sketch
+wireframe
 .DS_Store
+.env
