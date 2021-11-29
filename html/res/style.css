@@ -1,0 +1,25 @@
+.mapblock{
+    position: relative;
+}
+
+
+.sticky-map {
+    border: red 1px solid;
+    position: sticky;
+    top: 0;
+    z-index: -1;
+}
+
+.card {
+    margin-top: 100vh;
+}
+
+.card:first-child {
+    margin: 0 0;
+}
+
+.container {
+    padding-bottom: 0px;
+    position: relative;
+    top:-50vh;
+}
