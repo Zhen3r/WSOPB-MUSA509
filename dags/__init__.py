@@ -10,18 +10,18 @@ with DAG(dag_id='addresses_pipeline',
     # EXTRACT TASKS
     downloadACS = BashOperator(
         task_id='downloadACS',
-        bash_command='python ./dataPipeline/downloadACS.py',
+        bash_command='/home/zhen/conda/envs/air/bin/python /home/zhen/code/musa509-final-proj/dags/dataPipeline/downloadACS.py',
         dag=dag)
 
     downloadParks = BashOperator(
         task_id='downloadParks',
-        bash_command='python ./dataPipeline/downloadParks.py',
+        bash_command='/home/zhen/conda/envs/air/bin/python /home/zhen/code/musa509-final-proj/dags/dataPipeline/downloadParks.py',
         dag=dag)
 
     # TRANSFORM TASKS
     transformACS = BashOperator(
         task_id='transformACS',
-        bash_command='python ./dataPipeline/transformACS.py',
+        bash_command='/home/zhen/conda/envs/air/bin/python /home/zhen/code/musa509-final-proj/dags/dataPipeline/transformACS.py',
         dag=dag)
 
 # DEPENDENCIES
