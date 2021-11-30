@@ -2,6 +2,8 @@ from airflow import DAG
 from airflow.operators.bash import BashOperator
 from datetime import datetime
 
+bash_command = "cd /home/zhen/code/musa509-final-proj && proxychains /home/zhen/conda/envs/509/bin/python -m dags.dataPipeline._"
+
 with DAG(dag_id='park_pipeline',
          schedule_interval='@daily',
          start_date=datetime(2021, 11, 29),
@@ -10,18 +12,18 @@ with DAG(dag_id='park_pipeline',
     # EXTRACT TASKS
     downloadACS = BashOperator(
         task_id='downloadACS',
-        bash_command='proxychains /home/zhen/conda/envs/509/bin/python /home/zhen/code/musa509-final-proj/dags/dataPipeline/downloadACS.py',
+        bash_command=bash_command.replace("_", "downloadACS"),
         dag=dag)
 
     downloadParks = BashOperator(
         task_id='downloadParks',
-        bash_command='proxychains /home/zhen/conda/envs/509/bin/python /home/zhen/code/musa509-final-proj/dags/dataPipeline/downloadParks.py',
+        bash_command=bash_command.replace("_", "downloadParks"),
         dag=dag)
 
     # TRANSFORM TASKS
     transformACS = BashOperator(
         task_id='transformACS',
-        bash_command='proxychains /home/zhen/conda/envs/509/bin/python /home/zhen/code/musa509-final-proj/dags/dataPipeline/transformACS.py',
+        bash_command=bash_command.replace("_", "transformACS"),
         dag=dag)
 
 # DEPENDENCIES
