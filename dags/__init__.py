@@ -2,7 +2,7 @@ from airflow import DAG
 from airflow.operators.bash import BashOperator
 from datetime import datetime
 
-bash_command = "cd /home/zhen/code/musa509-final-proj && proxychains /home/zhen/conda/envs/509/bin/python -m dags.dataPipeline._"
+bash_command = "cd /home/zhen/code/musa509-final-proj/dags && proxychains /home/zhen/conda/envs/509/bin/python -m dataPipeline._"
 
 with DAG(dag_id='park_pipeline',
          schedule_interval='@daily',
