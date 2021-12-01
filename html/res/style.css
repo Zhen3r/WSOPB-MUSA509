@@ -7,9 +7,12 @@
     border: red 1px solid;
     position: sticky;
     top: 0;
-    z-index: -1;
+    /* z-index: -1; */
 }
 
+.card-container{
+    margin-left: 50px;
+}
 .card {
     margin-top: 100vh;
 }
@@ -22,4 +25,32 @@
     padding-bottom: 0px;
     position: relative;
     top:-50vh;
+}
+
+.box-legend{
+    height: 260px;
+    width: 260px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin:auto;
+}
+
+.box-legend-square{
+    height:40px;
+    width:40px;
+    text-align: center;
+    line-height: 40px;
+    color:aliceblue;
+}
+
+s{
+    font-weight: bold;
+    color: #3b4994;
+    text-decoration: none;
+    color: #14299e, #a51313;
+}
+
+.leaflet-popup-content p {
+    margin:10px;
 }
