@@ -17,22 +17,6 @@
 </head>
 
 <body>
-    <!-- navbar -->
-    <!-- <nav class="navbar navbar-light bg-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">Navbar</a>
-            <ul class="nav nav-pills nav-fill">
-                <li class="nav-item">
-                    <a class="nav-link bg-dark text-white" href="#">Section1</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-black" href="#">Section2</a>
-                </li>
-
-            </ul>
-        </div>
-    </nav> -->
-
     <!-- front page -->
     <div class="mapblock vh-100 d-flex">
         <h1 class="d-flex align-items-center text-center" style="text-align: center;">Here is an title</h1>
@@ -44,12 +28,28 @@
             <div id="map01" class="w-100 h-100"></div>
         </div>
         <div class="card-container">
-            <div class="float card col-5 shadow">
+            <div class="float card col-5 shadow" id="map01-card">
                 <div class="card-body">
                     <h5 class="card-title">Hello, world!</h5>
                     <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                    <p class="card-text">Hello, world!Hello, world!Hello, world!Hello, world!Hello, world!Hello,
-                        world!Hello, world!Hello, world!Hello, world!Hello, world!</p>
+                    <p class="card-text">As the COVID-19 stretched into end of 2020, people in Philadelphia began to
+                        flock to outdoor green spaces in and around the city. A report from the <a
+                            href="https://www.tpl.org/city/philadelphia-pennsylvania"> Trust for Public
+                            Land</a> finds that although green spaces in
+                        Philadelphia is accessible to most citizens, the amont of green spaces varies greatly based on
+                        income and race. </p>
+                    <p>And according to
+                        <a
+                            href="https://www.inquirer.com/science/climate/philadelphia-heat-island-climate-change-hunting-park-20190724.html">Inquirer</a>,
+                        some Philly neighborhoods can be up to 20°F (6.7°C) hotter than others during the summer months
+                        due to Urban Heat Island Effect. The drainage problem of the flood has also become a worrying
+                        problem in Philadelphia.
+                    </p>
+                    <p>
+                        Moreover, Philadelphia Parks and Recreation budget was cut by 20%
+                        during the last fiscal year, equating to about $12.5 million, which means that the budget on
+                        new green spaces is limited.!
+                    </p>
                 </div>
             </div>
             <div class="float card col-5 shadow">
@@ -60,8 +60,8 @@
                             </h6>
                             <p class="card-text">Hello, world!Hello, world!Hello, world!Hello, world!Hello, world!Hello,
                                 world!Hello, world!Hello, world!Hello, world!Hello, world!</p>
-                            <div class="box-legend"></div>
                             <div id="chart01"></div>
+                            <div class="box-legend"></div>
                 </div>
             </div>
             <div class="float card col-5 shadow">
@@ -131,9 +131,6 @@
         crossorigin="anonymous"></script>
     <!-- charts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-    <!-- <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.1"></script>
-    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.18.2"></script> -->
     <!-- leaflet -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="

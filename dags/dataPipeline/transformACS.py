@@ -42,7 +42,7 @@ def getParkAreaWithinDistance(acsblockgroups: gpd.GeoDataFrame, distance: float,
 acsDataGeo["parkArea"] = acsDataGeo.apply(getParkAreaWithinDistance, axis=1,
                                           distance=searchDistance, park=parkUnion)
 acsDataGeo['parkPercentage'] = acsDataGeo["parkArea"] / \
-    acsDataGeo.geometry.area
+    acsDataGeo.geometry.buffer(searchDistance).area
 
 # saving data to postgres
 gpd_to_postgres(acsDataGeo, "acs_gpd", if_exists="replace")
