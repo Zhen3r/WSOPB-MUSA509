@@ -4,3 +4,6 @@ wireframe
 .DS_Store
 .env
 __pycache__
+package.json
+package-lock.json
+node_modules

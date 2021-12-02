@@ -1,12 +1,8 @@
 """
 Generate the json file that the web uses.
 
-1. equalityRace.geojson
-variables: blockgroup race percentage
-           blockgroup buffer park area percentage
-           tract medium income
-           GEOID
-           geom
+1. park.geojson
+Variables: geometry
 
 """
 
@@ -14,15 +10,11 @@ from ..utils.pipelineTools import postgres_to_gpd
 from pathlib import Path
 
 webResourcePath = Path(__file__).parents[2] / "html" / "res"
-fileName = "resSection1.geojson"
+fileName = "park.geojson"
 
 sql = """
-SELECT "GEOID" geoid,
-    "White" pct_white,
-    "Median income" medInc,
-    "geometry" geometry,
-    "parkPercentage" pct_park
-from acs_gpd
+SELECT st_union("geometry") geometry
+from park
 """
 
 gdf = postgres_to_gpd(sql)

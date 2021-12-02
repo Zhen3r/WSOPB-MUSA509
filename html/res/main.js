@@ -17,7 +17,7 @@ getQuantileBreaks = function (geojson, propertyName, breakNum) {
     return chroma.limits(classData, "q", breakNum);
 }
 
-getQuantileLevel = function (breaks, value) {
+classifyValueByBreaks = function (breaks, value) {
     for (let i = 0; i < breaks.length; i++) {
         const b = breaks[i];
         if (value < b) { return i - 1; }
@@ -68,21 +68,33 @@ var chart01Options = {
         size: 2
     },
 };
+var chart02Options = chart01Options;
+chart02Options.xaxis.title.text = "Average Median Household Income"
 var chart01 = new ApexCharts(document.querySelector("#chart01"), chart01Options);
 chart01.render();
-let map01Data;
+var chart02 = new ApexCharts(document.querySelector("#chart02"), chart01Options);
+chart02.render();
+let mapLayers = [];
 
+// Load Map00 data
+$.getJSON("res/park.geojson", function (geojson) {
+    let map00Data = L.geoJSON(geojson, {
+        style: { color: "green", weight: .8 }
+    });
+    mapLayers[0] = map00Data;
+    map00Data.addTo(map01);
+})
 
-// Add roads
+// Load Map01 data
 $.getJSON('res/resSection1.geojson', function (geojson) {
     let w_quan = getQuantileBreaks(geojson, "pct_white", 6);
     let p_quan = getQuantileBreaks(geojson, "pct_park", 6);
-    map01Data = L.geoJSON(geojson, {
+    let map01Data = L.geoJSON(geojson, {
         style: (feature) => {
             let pct_white = feature.properties["pct_white"];
             let pct_park = feature.properties["pct_park"];
-            let q_w = getQuantileLevel(w_quan, pct_white);
-            let q_p = getQuantileLevel(p_quan, pct_park);
+            let q_w = classifyValueByBreaks(w_quan, pct_white);
+            let q_p = classifyValueByBreaks(p_quan, pct_park);
             let colors = ["#14299e", "#a51313"];
             let c = chroma.average(colors, "lab", [q_w + 1, q_p + 1]);
             c = c.luminance((q_w + q_p) / 12 * .7);
@@ -105,6 +117,7 @@ $.getJSON('res/resSection1.geojson', function (geojson) {
             );
         }
     });
+    mapLayers[1] = map01Data;
     // map01Data.addTo(map01);
     let chartData = geojson.features.map((blockgroup) => {
         return [blockgroup.properties.pct_white, Math.log(0.001 + blockgroup.properties.pct_park)]
@@ -114,7 +127,7 @@ $.getJSON('res/resSection1.geojson', function (geojson) {
         data: chartData,
     }])
 })
-//legend
+// Map01 legend
 legendNum = 6;
 for (let i = 0; i < legendNum ** 2; i++) {
     $("<div class='box-legend-square'></div>").appendTo(".box-legend")
@@ -130,16 +143,73 @@ let boxes = $(".box-legend-square").each(function (i, box) {
     $(box).text("" + x + ", " + y);
 })
 
-
-let scroll_pos_test = 2400;             // set to whatever you want it to be
-let mapStatus = 0;
-$(window).on('scroll', function () {
-    var y_scroll_pos = window.pageYOffset;
-    console.log(y_scroll_pos, scroll_pos_test)
-    if (y_scroll_pos > scroll_pos_test) {
-        if (mapStatus == 0) {
-            map01Data.addTo(map01);
-            mapStatus = 1;
+// Load Map01 data
+$.getJSON('res/resSection1.geojson', function (geojson) {
+    let w_quan = getQuantileBreaks(geojson, "medinc", 6);
+    let p_quan = getQuantileBreaks(geojson, "pct_park", 6);
+    let map02Data = L.geoJSON(geojson, {
+        style: (feature) => {
+            let pct_white = feature.properties["medinc"];
+            let pct_park = feature.properties["pct_park"];
+            let q_w = classifyValueByBreaks(w_quan, pct_white);
+            let q_p = classifyValueByBreaks(p_quan, pct_park);
+            let colors = ["#14299e", "#a51313"];
+            let c = chroma.average(colors, "lab", [q_w + 1, q_p + 1]);
+            c = c.luminance((q_w + q_p) / 12 * .7);
+            c = c.saturate(.5);
+            return {
+                color: c,
+                weight: .8,
+                opacity: 1,
+            };
+        },
+        onEachFeature: function (feature, layer) {
+            let medinc = feature.properties.medinc;
+            medinc = medinc === null ? 0 : medinc;
+            let pct_park = feature.properties.pct_park;
+            pct_park = pct_park > 1 ? 1 : pct_park;
+            layer.bindPopup(
+                generatePopup("Median House Hold Income", (medinc).toFixed(2) + "%") +
+                generatePopup("Park Area Percentage", (pct_park * 100).toFixed(2) + "%")
+            );
         }
+    });
+    mapLayers[2] = map02Data;
+    let chartData = geojson.features.map((blockgroup) => {
+        return [blockgroup.properties.medinc, Math.log(0.001 + blockgroup.properties.pct_park)]
+    })
+    chart02.updateSeries([{
+        name: 'correlations',
+        data: chartData,
+    }])
+})
+
+
+
+let topOffset = -$(window).height() * 1;
+let mapTops = $(".map-change").toArray().map((div) => { return $(div).offset().top + topOffset })
+let mapStatus = 0; // no map
+console.log(mapTops);
+let clearMap = function (map) {
+    map.eachLayer(function (layer) {
+        if (layer != basemap02) {
+            map.removeLayer(layer);
+        }
+    });
+}
+
+let addDataToMap = function (map, layer) {
+    clearMap(map);
+    layer.addTo(map);
+    console.log("adding map");
+}
+
+$(window).on('scroll', function () {
+    var yScrollPos = window.pageYOffset;
+    let currentMapStatus = classifyValueByBreaks(mapTops, yScrollPos);
+    // console.log(currentMapStatus);
+    if (currentMapStatus != mapStatus && currentMapStatus >= 0) {
+        mapStatus = currentMapStatus;
+        addDataToMap(map01, mapLayers[currentMapStatus]);
     }
 });
