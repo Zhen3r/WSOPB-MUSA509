@@ -1,3 +1,5 @@
+// const { default: GeoRasterLayer } = require("georaster-layer-for-leaflet");
+
 // define basemap
 let basemap01 = L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
     maxZoom: 18,
@@ -68,11 +70,11 @@ var chart01Options = {
         size: 2
     },
 };
-var chart02Options = chart01Options;
+var chart02Options = $.extend({}, chart01Options)
 chart02Options.xaxis.title.text = "Average Median Household Income"
 var chart01 = new ApexCharts(document.querySelector("#chart01"), chart01Options);
 chart01.render();
-var chart02 = new ApexCharts(document.querySelector("#chart02"), chart01Options);
+var chart02 = new ApexCharts(document.querySelector("#chart02"), chart02Options);
 chart02.render();
 let mapLayers = [];
 
@@ -143,7 +145,7 @@ let boxes = $(".box-legend-square").each(function (i, box) {
     $(box).text("" + x + ", " + y);
 })
 
-// Load Map01 data
+// Load Map02 data
 $.getJSON('res/resSection1.geojson', function (geojson) {
     let w_quan = getQuantileBreaks(geojson, "medinc", 6);
     let p_quan = getQuantileBreaks(geojson, "pct_park", 6);
@@ -174,6 +176,7 @@ $.getJSON('res/resSection1.geojson', function (geojson) {
             );
         }
     });
+
     mapLayers[2] = map02Data;
     let chartData = geojson.features.map((blockgroup) => {
         return [blockgroup.properties.medinc, Math.log(0.001 + blockgroup.properties.pct_park)]
@@ -184,12 +187,39 @@ $.getJSON('res/resSection1.geojson', function (geojson) {
     }])
 })
 
-
+// Load temp data
+var url_to_geotiff_file = "res/temperature.tif";
+let rasterLayer;
+// var parse_georaster = require("georaster");
+// var GeoRasterLayer = require("georaster-layer-for-leaflet");
+$(() => {
+    fetch(url_to_geotiff_file)
+        .then(response => response.arrayBuffer())
+        .then(arrayBuffer => {
+            parseGeoraster(arrayBuffer).then(georaster => {
+                let values = georaster.values.flat().map(x => Array.from(x)).flat().filter(x => x > 0);
+                let tempQuanBreaks = chroma.limits(values, "q", 6);
+                let tempColorMap = chroma.scale("RdYlBu").domain([5, 4, 3, 2, 1, 0]);
+                rasterLayer = new GeoRasterLayer({
+                    georaster: georaster,
+                    opacity: 0.7,
+                    pixelValuesToColorFn: values => {
+                        if (values == 0) { return null }
+                        values = classifyValueByBreaks(tempQuanBreaks, values);
+                        return tempColorMap(values)
+                    },
+                    resolution: 64,
+                });
+                mapLayers[3] = rasterLayer;
+            });
+        });
+})
 
 let topOffset = -$(window).height() * 1;
 let mapTops = $(".map-change").toArray().map((div) => { return $(div).offset().top + topOffset })
 let mapStatus = 0; // no map
 console.log(mapTops);
+
 let clearMap = function (map) {
     map.eachLayer(function (layer) {
         if (layer != basemap02) {
@@ -201,7 +231,6 @@ let clearMap = function (map) {
 let addDataToMap = function (map, layer) {
     clearMap(map);
     layer.addTo(map);
-    console.log("adding map");
 }
 
 $(window).on('scroll', function () {
@@ -210,6 +239,7 @@ $(window).on('scroll', function () {
     // console.log(currentMapStatus);
     if (currentMapStatus != mapStatus && currentMapStatus >= 0) {
         mapStatus = currentMapStatus;
+        console.log("adding map", mapStatus);
         addDataToMap(map01, mapLayers[currentMapStatus]);
     }
 });

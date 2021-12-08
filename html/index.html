@@ -13,19 +13,21 @@
         integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
         crossorigin="" />
     <link href="./res/style.css" rel="stylesheet">
-    <title>Hello, world!</title>
+    <title>MUSA509-Final-Assignment: Where should our next park be?</title>
 </head>
 
 <body>
     <!-- front page -->
-    <div class="mapblock vh-100 d-flex">
-        <h1 class="d-flex align-items-center text-center" style="text-align: center;">Here is an title</h1>
-    </div>
+    <!-- <div class="mapblock vh-100 d-flex">
+    </div> -->
 
     <!-- first map block -->
     <div class="mapblock">
         <div class="sticky-map w-100 vh-100">
             <div id="map01" class="w-100 h-100"></div>
+        </div>
+        <div class="title-page border rounded shadow-sm">
+            <h1>Where should Philly's next park be?</h1>
         </div>
         <div class="card-container">
             <div class="float card col-5 shadow map-change">
@@ -75,11 +77,19 @@
                     <div id="chart02"></div>
                 </div>
             </div>
+            <div class="float card col-5 shadow map-change">
+                <div class="card-body">
+                    <h4 class="card-title">Green Space Ecology</h4>
+                    <h5 class="card-subtitle mb-2 text-muted">Philadelphia Urban Heat Island</h5>
+                    <p class="card-text">Hello, world!Hello, world!Hello, world!Hello, world!Hello, world!Hello,
+                        world!Hello, world!Hello, world!Hello, world!Hello, world!</p>
+                </div>
+            </div>
         </div>
     </div>
 
     <!-- second map block -->
-    <div class="mapblock">
+    <!-- <div class="mapblock">
         <div id="map02" class="sticky-map w-100 vh-100">
         </div>
         <div class="container">
@@ -100,7 +110,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- bottom -->
     <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Corporis labore eum deleniti? Placeat minus saepe
@@ -134,10 +144,14 @@
         crossorigin="anonymous"></script>
     <!-- charts -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <!-- requirejs -->
+    <!-- <script src="https://requirejs.org/docs/release/2.3.6/minified/require.js"></script> -->
     <!-- leaflet -->
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
         integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
         crossorigin=""></script>
+    <script src="https://unpkg.com/georaster-layer-for-leaflet/dist/georaster-layer-for-leaflet.min.js"></script>
+    <script src="https://unpkg.com/georaster"></script>
     <!-- chroma.js for colors -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.1.0/chroma.min.js"></script>
 

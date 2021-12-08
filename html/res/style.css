@@ -9,10 +9,27 @@
     top: 0;
     /* z-index: -1; */
 }
+.title-page{
+    position: relative;
+    margin: 0 auto;
+    padding: 0 50px;
+    background: #fffe;
+    height:150px;
+    top: -57vh;
+    width:fit-content;
+}
+
+.title-page h1{
+    text-align: center;
+    line-height: 150px;
+    font-size: calc(1.375rem + 3vw);
+    color: #5a875a;;
+}
 
 .card-container{
     margin-left: 50px;
     padding-bottom: 50vh;
+    /* padding-top: 50vh; */
 }
 .card {
     margin-top: 100vh;
