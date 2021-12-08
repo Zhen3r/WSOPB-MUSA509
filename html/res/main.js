@@ -35,42 +35,8 @@ generatePopup = function (name, value) {
 var map01 = L.map('map01', { zoomSnap: 0.2, scrollWheelZoom: false }).setView([40.0, -75.26], 11.6)
 basemap02.addTo(map01);
 //chart
-var chart01Options = {
-    series: [],
-    chart: {
-        height: 250,
-        type: 'scatter',
-        zoom: {
-            enabled: true,
-            type: 'xy'
-        }
-    },
-    xaxis: {
-        tickAmount: 10,
-        labels: {
-            formatter: function (val) {
-                return parseFloat(val).toFixed(1)
-            }
-        },
-        title: { text: "White Percentage of Blockgroups" }
-    },
-    yaxis: {
-        tickAmount: 7,
-        labels: {
-            formatter: function (val) {
-                return parseFloat(val).toFixed(2)
-            }
-        },
-        title: { text: "log(ParkAreaPct)" }
-    },
-    noData: {
-        text: 'Loading...'
-    },
-    markers: {
-        size: 2
-    },
-};
-var chart02Options = $.extend({}, chart01Options)
+var chart01Options = { series: [], chart: { height: 250, type: 'scatter', zoom: { enabled: true, type: 'xy' } }, xaxis: { tickAmount: 10, labels: { formatter: function (val) { return parseFloat(val).toFixed(1) } }, title: { text: "White Percentage of Blockgroups" } }, yaxis: { tickAmount: 7, labels: { formatter: function (val) { return parseFloat(val).toFixed(2) } }, title: { text: "log(ParkAreaPct)" } }, noData: { text: 'Loading...' }, markers: { size: 2 }, };
+var chart02Options = { series: [], chart: { height: 250, type: 'scatter', zoom: { enabled: true, type: 'xy' } }, xaxis: { tickAmount: 10, labels: { formatter: function (val) { return parseFloat(val).toFixed(1) } }, title: { text: "Average Median Household Income" } }, yaxis: { tickAmount: 7, labels: { formatter: function (val) { return parseFloat(val).toFixed(2) } }, title: { text: "log(ParkAreaPct)" } }, noData: { text: 'Loading...' }, markers: { size: 2 }, };
 chart02Options.xaxis.title.text = "Average Median Household Income"
 var chart01 = new ApexCharts(document.querySelector("#chart01"), chart01Options);
 chart01.render();
@@ -135,6 +101,7 @@ for (let i = 0; i < legendNum ** 2; i++) {
     $("<div class='box-legend-square'></div>").appendTo(".box-legend")
 }
 let boxes = $(".box-legend-square").each(function (i, box) {
+    if (i >= 36) i -= 36;
     let x = Math.floor(i / legendNum);
     let y = legendNum - 1 - i % legendNum;
     let colors = ["#14299e", "#a51313"];
@@ -171,7 +138,7 @@ $.getJSON('res/resSection1.geojson', function (geojson) {
             let pct_park = feature.properties.pct_park;
             pct_park = pct_park > 1 ? 1 : pct_park;
             layer.bindPopup(
-                generatePopup("Median House Hold Income", (medinc).toFixed(2) + "%") +
+                generatePopup("Median House Hold Income", (medinc).toFixed(2)) +
                 generatePopup("Park Area Percentage", (pct_park * 100).toFixed(2) + "%")
             );
         }

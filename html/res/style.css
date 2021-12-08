@@ -4,7 +4,7 @@
 
 
 .sticky-map {
-    border: red 1px solid;
+    /* border: red 1px solid; */
     position: sticky;
     top: 0;
     /* z-index: -1; */
@@ -13,7 +13,7 @@
     position: relative;
     margin: 0 auto;
     padding: 0 50px;
-    background: #fffe;
+    /* background: #fffe; */
     height:150px;
     top: -57vh;
     width:fit-content;
@@ -24,6 +24,7 @@
     line-height: 150px;
     font-size: calc(1.375rem + 3vw);
     color: #5a875a;;
+    text-shadow: #fff 3px 0 0, #fff 0 3px 0, #fff -3px 0 0, #fff 0 -3px 0;;
 }
 
 .card-container{
@@ -33,6 +34,7 @@
 }
 .card {
     margin-top: 100vh;
+    padding: 15px;
 }
 
 .card:first-child {
@@ -46,8 +48,8 @@
 }
 
 .box-legend{
-    height: 260px;
-    width: 260px;
+    height: 200px;
+    width: 200px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -55,11 +57,12 @@
 }
 
 .box-legend-square{
-    height:40px;
-    width:40px;
+    height:30px;
+    width:30px;
     text-align: center;
-    line-height: 40px;
+    line-height: 30px;
     color:aliceblue;
+    font-size: 10pt;
 }
 
 s{
@@ -72,3 +75,21 @@ s{
 .leaflet-popup-content p {
     margin:10px;
 }
+.fakeimg {
+    background-position: center;
+    height:100vh;
+}
+.fakeimg1{
+    background-image: url("../../pic/3.png");
+}
+.fakeimg2{
+    background-image: url("../../pic/4.1.png");
+}
+.fakeimg3{
+    background-image: url("../../pic/4.2.png");
+}
+.fakeimg4{
+    background-image: url("../../pic/4.3.png");
+}
+
+
