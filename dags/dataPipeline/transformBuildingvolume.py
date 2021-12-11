@@ -6,6 +6,7 @@ database table name: building_volume
 import numpy as np
 from ..utils.pipelineTools import postgres_to_gpd, gpd_to_postgres
 import geopandas as gpd
+import pandas as pd
 
 # load data from postgres
 building = postgres_to_gpd("select * from raw_building_volume;")

@@ -6,10 +6,14 @@ database table name: land_use
 import numpy as np
 from ..utils.pipelineTools import postgres_to_gpd, gpd_to_postgres
 import geopandas as gpd
+import pandas as pd
 
 # load data from postgres
 land_use = postgres_to_gpd("select * from raw_land_use;")
 tracts = postgres_to_gpd("select * from tracts;")
+
+# spatial join land_use and tracts
+tracts_land_use = gpd.sjoin(land_use[["C_DIG1","geometry"]], tracts[["NAME10","geometry"]], op='within', how='left')
 
 # set score for different category of land use: 1 - Residential - 1
 #                                               2 - Commercial - 1
@@ -30,9 +34,6 @@ tracts_land_use["land_use_score"]=np.select([(tracts_land_use["C_DIG1"]==1),
                                              (tracts_land_use["C_DIG1"]==8),
                                              (tracts_land_use["C_DIG1"]==9)],
                                             [1,1,1,1,1,0.75,0.25,0.5,0.25])
-
-# spatial join land_use and tracts
-tracts_land_use = gpd.sjoin(land_use2016[["C_DIG1","geometry"]], tracts[["NAME10","geometry"]], op='within', how='left')
 
 # group by census tracts calculate average score of land use
 tracts_land_use_group = tracts_land_use[['NAME10',"land_use_score"]].groupby(["NAME10"], as_index=False).mean()
