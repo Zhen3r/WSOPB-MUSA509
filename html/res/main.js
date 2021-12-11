@@ -11,6 +11,9 @@ let basemap02 = L.tileLayer('https://{s}.basemaps.cartocdn.com/rastertiles/light
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">Carto</a>'
 })
 
+// defining reuseable geojson objects
+let park;
+
 getQuantileBreaks = function (geojson, propertyName, breakNum) {
     let classData = [];
     geojson.features.forEach(feature => {
@@ -49,6 +52,7 @@ $.getJSON("res/park.geojson", function (geojson) {
     let map00Data = L.geoJSON(geojson, {
         style: { color: "green", weight: .8 }
     });
+    park = geojson;
     mapLayers[0] = map00Data;
     map00Data.addTo(map01);
 })
@@ -154,6 +158,8 @@ $.getJSON('res/resSection1.geojson', function (geojson) {
     }])
 })
 
+
+
 // Load temp data
 var url_to_geotiff_file = "res/temperature.tif";
 let rasterLayer;
@@ -197,7 +203,9 @@ let clearMap = function (map) {
 
 let addDataToMap = function (map, layer) {
     clearMap(map);
-    layer.addTo(map);
+    if (layer instanceof Array) {
+        layer.forEach(l => l.addTo(map))
+    } else layer.addTo(map)
 }
 
 $(window).on('scroll', function () {
