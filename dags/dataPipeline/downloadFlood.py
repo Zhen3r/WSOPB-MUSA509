@@ -13,4 +13,10 @@ flood100 = gpd.read_file(
 flood100 = flood100.to_crs(crs)
 gpd_to_postgres(flood100, "flood100", if_exists="replace")
 
+flood500 = gpd.read_file(
+    'https://opendata.arcgis.com/datasets/1e6f6315225544c88549478d25cc5181_0.geojson')
+flood500 = flood500.to_crs(crs)
+gpd_to_postgres(flood500, "flood500", if_exists="replace")
+
+
 print("Success!")

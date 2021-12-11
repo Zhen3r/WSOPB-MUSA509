@@ -34,24 +34,25 @@ total_flood = gpd.overlay(flood100, flood500, how='union')
 noflood = gpd.overlay(city_limits, total_flood, how='difference')
 
 # set flood score and description to all area
-only500_nopark["score"]=0.5
-only500_park["score"]=0
-flood100_nopark["score"]=1
-flood100_park["score"]=0
-noflood["score"]=0
+only500_nopark["score"] = 0.5
+only500_park["score"] = 0
+flood100_nopark["score"] = 1
+flood100_park["score"] = 0
+noflood["score"] = 0
 
-only500_nopark["description"]="500 year floodplain without parks"
-only500_park["description"]="500 year floodplain within parks"
-flood100_nopark["description"]="100 year floodplain without parks"
-flood100_park["description"]="100 year floodplain within parks"
-noflood["description"]="non-flood area"
+only500_nopark["description"] = "500 year floodplain without parks"
+only500_park["description"] = "500 year floodplain within parks"
+flood100_nopark["description"] = "100 year floodplain without parks"
+flood100_park["description"] = "100 year floodplain within parks"
+noflood["description"] = "non-flood area"
 
 # combine the areas together
-flood = pd.concat([only500_nopark[["score","description","geometry"]], 
-                   only500_park[["score","description","geometry"]], 
-                   flood100_nopark[["score","description","geometry"]], 
-                   flood100_park[["score","description","geometry"]], 
-                   noflood[["score","description","geometry"]]]).reset_index(drop=True)
+flood = pd.concat([only500_nopark[["score", "description", "geometry"]],
+                   only500_park[["score", "description", "geometry"]],
+                   flood100_nopark[["score", "description", "geometry"]],
+                   flood100_park[["score", "description", "geometry"]],
+                   noflood[["score", "description", "geometry"]]]).reset_index(drop=True)
+flood = gpd.GeoDataFrame(flood)
 
 # saving data to postgres
 gpd_to_postgres(flood, "flood", if_exists="replace")
