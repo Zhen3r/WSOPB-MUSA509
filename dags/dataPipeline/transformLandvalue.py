@@ -6,6 +6,7 @@ database table name: land_value
 import numpy as np
 from ..utils.pipelineTools import postgres_to_gpd, gpd_to_postgres
 import geopandas as gpd
+import pandas as pd
 
 # load data from postgres
 land_value = postgres_to_gpd("select * from raw_land_value;")
