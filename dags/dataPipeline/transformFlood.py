@@ -11,7 +11,7 @@ import pandas as pd
 # load data from postgres
 flood100 = postgres_to_gpd("select * from flood100;")
 flood500 = postgres_to_gpd("select * from flood500;")
-park = postgres_to_gpd("select * from park;")
+park = postgres_to_gpd("select * from park;").to_crs(4326)
 city_limits = postgres_to_gpd("select * from city_limits;")
 
 # find the place in flood500 not in flood100
