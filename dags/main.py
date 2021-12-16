@@ -88,6 +88,11 @@ with DAG(dag_id='park_pipeline',
         bash_command=bash_command.replace("_", "transformLandvalue"),
         dag=dag)
 
+    transformTemperature = BashOperator(
+        task_id='transformTemperature',
+        bash_command=bash_command.replace("_", "transformTemperature"),
+        dag=dag)
+
     # GENERATE WEB RESOURCES
     generateSection1 = BashOperator(
         task_id='generateSection1',
@@ -109,6 +114,11 @@ with DAG(dag_id='park_pipeline',
         bash_command=bash_command.replace("_", "generateSection4"),
         dag=dag)
 
+    generateSection5 = BashOperator(
+        task_id='generateSection5',
+        bash_command=bash_command.replace("_", "generateSection5"),
+        dag=dag)
+
     generateSection0 = BashOperator(
         task_id='generateSection0',
         bash_command=bash_command.replace("_", "generateSection0"),
@@ -122,11 +132,12 @@ T = DummyOperator(task_id='wait_for_transform')
  downloadCitylimits, downloadFlood, downloadLanduse,
  downloadLandvalue, downloadTracts, ] >> E
 
-E >> [transformACS, transformBuildingVolume,
+E >> [transformACS, transformBuildingVolume, transformTemperature,
       transformFlood, transformLanduse, transformLandvalue]
 [transformBuildingVolume, transformLandvalue, transformLanduse] >> transformCost
-[transformACS, transformCost, transformFlood] >> transformIndex
+[transformACS, transformCost,
+ transformFlood, transformTemperature] >> transformIndex
 transformIndex >> T
 
 T >> [generateSection0, generateSection1, generateSection2,
-      generateSection3, generateSection4]
+      generateSection3, generateSection4, generateSection5]

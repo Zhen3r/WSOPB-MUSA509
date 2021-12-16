@@ -17,8 +17,11 @@ import shapely.geometry as sg
 
 final_crs = crs.CRS.from_epsg('4326')
 
-in_path = './data/LC08_L2SP_014032_20210927_20211001_02_T1_ST_B10.TIF'
-out_path = './data/reproject.tif'
+in_path = './tiff/raw.TIF'
+reproj_path = './tiff/reproject.tif'
+tem_path = './tiff/tem.tif'
+hotspot_path = './tiff/hotspot.tif'
+
 
 # reproject to 4326
 
@@ -50,10 +53,10 @@ def reproject_raster(in_path, out_path):
     return(out_path)
 
 
-reproject_raster(in_path, out_path)
+reproject_raster(in_path, reproj_path)
 
 # open reprojected tiff and city limit
-f = rio.open(out_path)
+f = rio.open(reproj_path)
 city_limits = postgres_to_gpd('select * from city_limits;')
 
 city_limits = city_limits.to_crs(f.crs.data['init'])
@@ -113,18 +116,19 @@ profile.update(
 )
 
 # save temperaure tiff to local
-with rio.open('./data/temperature.tif', 'w', **profile) as dst:
+with rio.open(tem_path, 'w', **profile) as dst:
     dst.write(temperature, 1)
 
 # select urban heat island part
 hot_spots = np.where(temperature > 95, temperature, np.nan)
 
 # save hot spot tiff
-with rio.open('E:/graduate/musa509/assignment/hot_spots.tif', 'w', **profile) as dst:
+with rio.open(hotspot_path, 'w', **profile) as dst:
     dst.write(hot_spots, 1)
 
 # read as tiff
-urbanheat = xr.open_rasterio('E:/graduate/musa509/assignment/hot_spots.tif')
+urbanheat = xr.open_rasterio(hotspot_path)
+
 
 def toGDF(urbanheat):
     values = urbanheat.values
@@ -143,15 +147,17 @@ def toGDF(urbanheat):
     gdf.crs = urbanheat.attrs.get("crs")
     return gdf
 
+
 # transform tiff to geodataframe
-urbanheat = toGDF(urbanheat) 
+urbanheat = toGDF(urbanheat)
 
 # select heat area
-urbanheat=urbanheat[urbanheat['value']!=0]
+urbanheat = urbanheat[urbanheat['value'] != 0]
 
 # union all heat geometry
 urbanheat['geometry'] = urbanheat.buffer(0.000000000000001)
-urbanheatunion = gpd.GeoDataFrame(geometry=gpd.GeoSeries(urbanheat.geometry.unary_union))
+urbanheatunion = gpd.GeoDataFrame(
+    geometry=gpd.GeoSeries(urbanheat.geometry.unary_union))
 
 # save data to postgres
 gpd_to_postgres(urbanheatunion, "urban_heat_island", if_exists="replace")
