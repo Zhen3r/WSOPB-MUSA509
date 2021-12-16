@@ -1,6 +1,6 @@
 """
-Transform the crs of Landsat data, calculate the temperature in Fahrenheit.
-database table name: 
+Transform the crs of Landsat data, calculate the temperature in Fahrenheit, find urban heat island area and save it to postgres.
+database table name: urban_heat_island
 """
 
 import numpy as np
@@ -10,6 +10,10 @@ import rasterio as rio
 from rasterio.mask import mask
 from rasterio import crs
 from rasterio.warp import calculate_default_transform, reproject, Resampling
+import xarray as xr
+import affine
+import rasterio.features
+import shapely.geometry as sg
 
 final_crs = crs.CRS.from_epsg('4326')
 
@@ -103,4 +107,43 @@ profile.update(
 with rio.open('./data/temperature.tif', 'w', **profile) as dst:
     dst.write(temperature, 1)
 
+# select urban heat island part
+hot_spots = np.where(temperature > 95, temperature, np.nan)
+
+# save hot spot tiff
+with rio.open('E:/graduate/musa509/assignment/hot_spots.tif', 'w', **profile) as dst:
+    dst.write(hot_spots, 1)
+
+# read as tiff
+urbanheat = xr.open_rasterio('E:/graduate/musa509/assignment/hot_spots.tif')
+
+def toGDF(urbanheat):
+    values = urbanheat.values
+    transform = urbanheat.attrs.get("transform", None)
+
+    transform = affine.Affine(*transform)
+    shapes = rasterio.features.shapes(values, transform=transform)
+
+    geometries = []
+    colvalues = []
+    for (geom, colval) in shapes:
+        geometries.append(sg.Polygon(geom["coordinates"][0]))
+        colvalues.append(colval)
+
+    gdf = gpd.GeoDataFrame({"value": colvalues, "geometry": geometries})
+    gdf.crs = urbanheat.attrs.get("crs")
+    return gdf
+
+# transform tiff to geodataframe
+urbanheat = toGDF(urbanheat) 
+
+# select heat area
+urbanheat=urbanheat[urbanheat['value']!=0]
+
+# union all heat geometry
+urbanheat['geometry'] = urbanheat.buffer(0.000000000000001)
+urbanheatunion = gpd.GeoDataFrame(geometry=gpd.GeoSeries(urbanheat.geometry.unary_union))
+
+# save data to postgres
+gpd_to_postgres(urbanheatunion, "urban_heat_island", if_exists="replace")
 print("Success!")
