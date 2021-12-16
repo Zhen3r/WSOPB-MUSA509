@@ -56,7 +56,7 @@ with DAG(dag_id='park_pipeline',
 
     downloadTracts = BashOperator(
         task_id='downloadTracts',
-        bash_command=bash_command_proxy.replace("_", "downloadTracts"),
+        bash_command=bash_command.replace("_", "downloadTracts"),
         trigger_rule="all_done",
         dag=dag)
 
