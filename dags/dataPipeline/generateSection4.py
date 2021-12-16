@@ -2,7 +2,7 @@
 Generate the json file that the web uses.
 
 1. feasibility.geojson
-variables: cost, race, income, geometry
+variables: cost, race, income, park, flood, geometry
 
 """
 

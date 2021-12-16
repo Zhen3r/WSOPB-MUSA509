@@ -1,4 +1,3 @@
-import pandas as pd
 import geopandas as gpd
 import numpy as np
 from ..utils.pipelineTools import postgres_to_gpd, gpd_to_postgres
