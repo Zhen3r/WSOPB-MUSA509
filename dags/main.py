@@ -7,7 +7,7 @@ bash_command = "cd /home/zhen/code/musa509-final-proj && /home/zhen/conda/envs/5
 bash_command_proxy = "cd /home/zhen/code/musa509-final-proj && proxychains /home/zhen/conda/envs/509/bin/python -m dags.dataPipeline._"
 
 with DAG(dag_id='park_pipeline',
-         schedule_interval='@daily',
+         schedule_interval='@monthly',
          start_date=datetime(2021, 11, 29),
          catchup=False) as dag:
 
