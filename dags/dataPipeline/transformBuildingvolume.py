@@ -3,7 +3,6 @@ Transform building volume data, calculate the average building volume of each ce
 database table name: building_volume
 """
 
-import numpy as np
 from ..utils.pipelineTools import postgres_to_gpd, gpd_to_postgres
 import geopandas as gpd
 import pandas as pd

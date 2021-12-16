@@ -3,9 +3,7 @@ Calculate the score of cost of each census tracts.
 database table name: cost
 """
 
-import numpy as np
 from ..utils.pipelineTools import postgres_to_gpd, gpd_to_postgres
-import geopandas as gpd
 import pandas as pd
 
 # load data from postgres

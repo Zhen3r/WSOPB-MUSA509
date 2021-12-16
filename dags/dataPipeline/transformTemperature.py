@@ -13,15 +13,18 @@ from rasterio.warp import calculate_default_transform, reproject, Resampling
 
 final_crs = crs.CRS.from_epsg('4326')
 
-in_path='./data/LC08_L2SP_014032_20210927_20211001_02_T1_ST_B10.TIF'
-out_path='./data/reproject.tif'
+in_path = './data/LC08_L2SP_014032_20210927_20211001_02_T1_ST_B10.TIF'
+out_path = './data/reproject.tif'
 
 # reproject to 4326
+
+
 def reproject_raster(in_path, out_path):
     # reproject raster to project crs
     with rio.open(in_path) as src:
         src_crs = src.crs
-        transform, width, height = calculate_default_transform(src_crs, final_crs, src.width, src.height, *src.bounds)
+        transform, width, height = calculate_default_transform(
+            src_crs, final_crs, src.width, src.height, *src.bounds)
         profile = src.meta.copy()
 
         profile.update({
@@ -42,11 +45,12 @@ def reproject_raster(in_path, out_path):
                     resampling=Resampling.nearest)
     return(out_path)
 
+
 reproject_raster(in_path, out_path)
 
 # open reprojected tiff and city limit
 f = rio.open(out_path)
-city_limits = gpd.read_file("http://data.phl.opendata.arcgis.com/datasets/405ec3da942d4e20869d4e1449a2be48_0.geojson")
+city_limits = postgres_to_gpd('select * from city_limits;')
 
 city_limits = city_limits.to_crs(f.crs.data['init'])
 
@@ -54,16 +58,18 @@ city_limits = city_limits.to_crs(f.crs.data['init'])
 masked_city, mask_transform = mask(
     dataset=f,
     shapes=city_limits.geometry,
-    crop=True, 
-    all_touched=True,  
-    filled=False,  
+    crop=True,
+    all_touched=True,
+    filled=False,
 )
 
 # get raw temperature of Philly
-temperature=masked_city[0]
+temperature = masked_city[0]
 temperature
 
 # calculate temperature in Fahrenheit
+
+
 def calculate_temperature(data):
     """
     Calculate the Fahrenheit from temparature tiff
@@ -73,8 +79,10 @@ def calculate_temperature(data):
     # Get valid entries
     check = data.mask == False
     # Where the check is True, return the NDVI, else return NaN
-    temperature = np.where(check,  1.8 * ((data * 0.00341802 + 149.0) - 273) + 32, np.nan )
-    return temperature 
+    temperature = np.where(
+        check,  1.8 * ((data * 0.00341802 + 149.0) - 273) + 32, np.nan)
+    return temperature
+
 
 temperature = calculate_temperature(temperature)
 
@@ -90,11 +98,12 @@ landsat_extent = [
 ]
 
 # calculate output transform
-transform, width, height = calculate_default_transform(f.crs, final_crs, temperature.shape[1], temperature.shape[0], *landsat_extent)
+transform, width, height = calculate_default_transform(
+    f.crs, final_crs, temperature.shape[1], temperature.shape[0], *landsat_extent)
 
 # update profile
 profile.update(
-    width=width, 
+    width=width,
     height=height,
     transform=transform
 )

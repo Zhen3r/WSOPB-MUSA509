@@ -3,7 +3,6 @@ Find flood area that contain and don't contain parks and score them.
 database table name: flood
 """
 
-import numpy as np
 from ..utils.pipelineTools import postgres_to_gpd, gpd_to_postgres
 import geopandas as gpd
 import pandas as pd

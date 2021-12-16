@@ -163,8 +163,6 @@ $.getJSON('res/resSection1.geojson', function (geojson) {
 // Load temp data
 var url_to_geotiff_file = "res/temperature.tif";
 let rasterLayer;
-// var parse_georaster = require("georaster");
-// var GeoRasterLayer = require("georaster-layer-for-leaflet");
 $(() => {
     fetch(url_to_geotiff_file)
         .then(response => response.arrayBuffer())
@@ -188,6 +186,110 @@ $(() => {
         });
 })
 
+$.getJSON('res/flood.geojson', function (geojson) {
+    let mapData = L.geoJSON(geojson, {
+        style: (feature) => {
+            let score = 1 - feature.properties.score;
+            let c = chroma.scale("viridis")(score);
+            return {
+                color: c,
+                weight: .8,
+                opacity: 1,
+            };
+        },
+        onEachFeature: function (feature, layer) {
+            let score = feature.properties.score;
+            let description = feature.properties.description;
+            layer.bindPopup(
+                generatePopup("score", (score).toFixed(2)) +
+                generatePopup("description", description)
+            );
+        }
+    });
+    mapLayers[4] = [mapData];
+})
+
+let cost;
+let getCostLayer = function (layerIndex) {
+    let layer = ['score', 'land_use_score', 'land_value_score', 'building_score'][layerIndex]
+    let mapData = L.geoJSON(cost, {
+        style: (feature) => {
+            let score = feature.properties[layer];
+
+            let c = chroma.scale("viridis")(score);
+            return {
+                color: c,
+                weight: .95,
+                opacity: 1,
+            };
+        },
+        onEachFeature: function (feature, layer) {
+            let score = feature.properties.score;
+            let land_value_score = feature.properties.land_value_score;
+            let building_score = feature.properties.building_score;
+            let land_use_score = feature.properties.land_use_score;
+            layer.bindPopup(
+                generatePopup("Overall Cost", (score).toFixed(2)) +
+                generatePopup("Land Use Cost", (land_use_score).toFixed(2)) +
+                generatePopup("Land Value Cost", (land_value_score).toFixed(2)) +
+                generatePopup("Demolition Cost", (building_score).toFixed(2))
+            );
+        }
+    });
+    return (mapData)
+}
+
+$.getJSON('res/cost.geojson', function (geojson) {
+    cost = geojson;
+    mapData = getCostLayer(0);
+    mapLayers[5] = [mapData];
+})
+
+let feasibility;
+let coef = { a1: 1, a2: 1, a3: 1, a4: 1, a5: 1, a6: 1 };
+let changeFeaLayer = function () {
+    let park, cost, race, income, flood, heat, score;
+    console.log(coef)
+    let mapData = L.geoJSON(feasibility, {
+        style: (feature) => {
+            park = feature.properties.park;
+            cost = feature.properties.cost;
+            race = feature.properties.race;
+            income = feature.properties.income;
+            flood = feature.properties.flood;
+            heat = feature.properties.income;
+            let a1 = coef['a1'], a2 = coef['a2'], a3 = coef['a3'], a4 = coef['a4'], a5 = coef['a5'], a6 = coef['a6'];
+            score = a1 * race + a2 * income - a3 * cost - a4 * park + a5 * flood + a6 * heat;
+            // standardize the score
+            score = score / Math.abs(a1 + a2 - a3 - a4 + a5 + a6)
+            // console.log('score', score)
+            let c = chroma.scale("viridis").domain([-0.5, 1])(score);
+            return {
+                color: c,
+                weight: .95,
+                opacity: 1,
+            };
+        },
+        onEachFeature: function (feature, layer) {
+            layer.bindPopup(
+                generatePopup("Overall Feasibility Index", (score).toFixed(2)) +
+                generatePopup("Park Area Index", (park).toFixed(2)) +
+                generatePopup("Cost Index", (cost).toFixed(2)) +
+                generatePopup("Race Index", (race).toFixed(2)) +
+                generatePopup("Income Index", (income).toFixed(2)) +
+                generatePopup("Flood Index", (flood).toFixed(2)) +
+                generatePopup("Heat Index", (heat).toFixed(2))
+            );
+        }
+    });
+    mapLayers[6] = mapData;
+}
+$.getJSON('res/feasibility.geojson', function (geojson) {
+    feasibility = geojson;
+    changeFeaLayer();
+})
+
+
 let topOffset = -$(window).height() * 1;
 let mapTops = $(".map-change").toArray().map((div) => { return $(div).offset().top + topOffset })
 let mapStatus = 0; // no map
@@ -207,7 +309,22 @@ let addDataToMap = function (map, layer) {
         layer.forEach(l => l.addTo(map))
     } else layer.addTo(map)
 }
+let drawCostLayer = function (layerIndex) {
+    mapData = getCostLayer(layerIndex);
+    mapLayers[5] = [mapData];
+    addDataToMap(map01, mapLayers[5]);
+}
 
+$(".cost-btn").each((i, element) => {
+    $(element).on("click", () => {
+        drawCostLayer(i);
+
+    })
+})
+$('.fea-btn').on('click', () => {
+    changeFeaLayer();
+    addDataToMap(map01, mapLayers[6]);
+})
 $(window).on('scroll', function () {
     var yScrollPos = window.pageYOffset;
     let currentMapStatus = classifyValueByBreaks(mapTops, yScrollPos);
@@ -218,3 +335,13 @@ $(window).on('scroll', function () {
         addDataToMap(map01, mapLayers[currentMapStatus]);
     }
 });
+
+
+$('input').on('input change', function () {
+    let s = $(this);
+    let id = s.attr("id");
+    let v = s.val();
+    v = Number(v);
+    coef[id] = v;
+    s.parent().find('.value').text(v.toFixed(2))
+})
