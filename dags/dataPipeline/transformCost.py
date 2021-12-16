@@ -18,7 +18,7 @@ tracts_value_group["land_value_score"] = tracts_value_group["market_value"].rank
     pct=True)//0.2*0.25
 
 # set score for building volume
-tracts_building_group["building_score"] = tracts_value_group["MAX_HGT"].rank(
+tracts_building_group["building_score"] = tracts_building_group["MAX_HGT"].rank(
     pct=True)//0.2*0.25
 
 # join land value and building volume
