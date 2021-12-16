@@ -25,8 +25,7 @@ for x in cols[:-1]:
 
 
 grid = gpd.GeoDataFrame({'geometry': polygons}, crs=6564)
-grid = grid.sjoin(gpd.GeoDataFrame(
-    geometry=city_boundary, crs=6564), how="left")
+grid = grid.sjoin(gpd.GeoDataFrame(geometry=city_boundary, crs=6564), how="left")
 grid = grid[-grid.index_right.isna()]
 grid = grid.to_crs(4326)
 grid = grid[['geometry']].copy()

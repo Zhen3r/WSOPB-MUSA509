@@ -68,8 +68,8 @@ with DAG(dag_id='park_pipeline',
         dag=dag)
 
     transformBuildingVolume = BashOperator(
-        task_id='transformBuildingVolume',
-        bash_command=bash_command.replace("_", "transformBuildingVolume"),
+        task_id='transformBuildingvolume',
+        bash_command=bash_command.replace("_", "transformBuildingvolume"),
         trigger_rule="all_done",
         dag=dag)
 
