@@ -4,16 +4,9 @@
 
 As part of MUSA 509 2021 — Final Project
 
+## [LINK TO PROJECT WEBSITE](http://509.orifish.tech)
 
-Zhenzhao Xu/Ziyuan Cai
-
-
-## TODO:
-
-1. build data pipeline:
-    1. E: request and save data: Park boundary 
-    2. L: load data
-    3. T: transform data
+Zhenzhao Xu & Ziyuan Cai
 
 ## Note:
 

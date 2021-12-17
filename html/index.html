@@ -102,10 +102,13 @@
                 <div class="card-body">
                     <h4 class="card-title">Green Space Ecology</h4>
                     <h5 class="card-subtitle mb-2 text-muted">Philadelphia <s>Flood Plain</s></h5>
-                    <p class="card-text">Parks and green spaces can also play a great role in improving the environment.
-                        The red area in the picture is where the temperature in Philadelphia is high, which is where the
-                        urban heat island effect is significant. Increasing the construction of parks in these areas can
-                        effectively alleviate the temperature imbalance.</p>
+                    <p class="card-text">Flooding from storm surges and heavy rainfall can be one of the most
+                        devastating effects of storms — and scientists say climate change is making those storms worse.
+                        Storm-resistant green spaces can help cities defend themselves against flooding. The purple area
+                        on the right is the once-in-100-year flood plain, and the blue area is the once-in-500-year
+                        flood plain. These areas are where parks are needed to prevent flooding and reduce the damage of
+                        it.</p>
+                    <p class="card-text"></p>
                 </div>
             </div>
             <!-- cost -->
@@ -113,10 +116,17 @@
                 <div class="card-body">
                     <h4 class="card-title">Green Space Economy</h4>
                     <h5 class="card-subtitle mb-2 text-muted"><s>Costs</s> to build a park</h5>
-                    <p class="card-text">Parks and green spaces can also play a great role in improving the environment.
-                        The red area in the picture is where the temperature in Philadelphia is high, which is where the
-                        urban heat island effect is significant. Increasing the construction of parks in these areas can
-                        effectively alleviate the temperature imbalance.</p>
+                    <p class="card-text">To figure out the cost to build a
+                        new park on a certain location in Philly, <b>a map of cost by census tracts was calculated based
+                            on land use, land value and building volume. </b>In terms of land use, we set the index of
+                        cost of Residential, Commercial, Industrial, Civic/Institution, Transportation areas as 1, Water
+                        area as 0.75, Culture/Recreation area as 0.5 and Park/Open Space and Vacant or other usage as
+                        0.25, because the renovation cost of built environment is undoubtedly huge, while vacant lots
+                        will be less expensive. For the cost of land value and demolition, we directly divide the
+                        corresponding value and building volumes into five quantiles. And the total cost is the average
+                        of three costs mentioned above. As in shown in the map, the cost of the city center is the
+                        largest, which is in line with our expectations.
+                    </p>
                     <div class="d-grid gap-3 d-md-block">
                         <button class="btn btn-secondary cost-btn" type="button">Overall Cost</button>
                         <button class="btn btn-secondary cost-btn" type="button">Land Use Cost</button>
@@ -129,53 +139,58 @@
             <div class="float card col-5 shadow map-change">
                 <div class="card-body">
                     <h4 class="card-title">Feasibility Index</h4>
-                    <h5 class="card-subtitle mb-2 text-muted">Calculated by Equality, Ecology, and Economy</h5>
-                    <p class="card-text">Parks and green spaces can also play a great role in improving the environment.
-                        The red area in the picture is where the temperature in Philadelphia is high, which is where the
-                        urban heat island effect is significant. Increasing the construction of parks in these areas can
-                        effectively alleviate the temperature imbalance.</p>
-                    <img class="mb-4" src="res/formula.png" width="100%">
-                    <div class="d-flex justify-content-around">
-                        <div>a1 </div>
-                        <div>=</div>
-                        <div class='value'>1.00</div>
-                        <input value='1' type="range" min="0" max="5" step="0.01" class="form-range w-75" id="a1">
-                    </div>
-                    <div class="d-flex justify-content-around">
-                        <div>a2 </div>
-                        <div>=</div>
-                        <div class='value'>1.00</div>
-                        <input value='1' type="range" min="0" max="5" step="0.01" class="form-range w-75" id="a2">
-                    </div>
+                    <h5 class="card-subtitle mb-2 text-muted">Based on the analysis above, the equation below is
+                        introduced to calculate and visualize the feasibility. In this project, we assume that the
+                        weight of each coefficient is one and the result is shown in the figure on the right. The yellow
+                        area represents high feasibility, indicating that these places have the problems above and are
+                        more suitable for a new park, while the purple part is the represents low feasibility, meaning
+                        that it's not efficient to build a park. You are welcomed to adjust the value of the coefficient
+                        by dragging the bar to customize your own formula and see what you've got. The default results
+                        show that North Philadelphia needs more new parks and is more suitable for new parks
+                        simultaneously.
+                        </p>
+                        <img class="mb-4" src="res/formula.png" width="100%">
+                        <div class="d-flex justify-content-around">
+                            <div>a1 </div>
+                            <div>=</div>
+                            <div class='value'>1.00</div>
+                            <input value='1' type="range" min="0" max="5" step="0.01" class="form-range w-75" id="a1">
+                        </div>
+                        <div class="d-flex justify-content-around">
+                            <div>a2 </div>
+                            <div>=</div>
+                            <div class='value'>1.00</div>
+                            <input value='1' type="range" min="0" max="5" step="0.01" class="form-range w-75" id="a2">
+                        </div>
 
-                    <div class="d-flex justify-content-around">
-                        <div>a3 </div>
-                        <div>=</div>
-                        <div class='value'>1.00</div>
-                        <input value='1' type="range" min="0" max="5" step="0.01" class="form-range w-75" id="a3">
-                    </div>
+                        <div class="d-flex justify-content-around">
+                            <div>a3 </div>
+                            <div>=</div>
+                            <div class='value'>1.00</div>
+                            <input value='1' type="range" min="0" max="5" step="0.01" class="form-range w-75" id="a3">
+                        </div>
 
-                    <div class="d-flex justify-content-around">
-                        <div>a4 </div>
-                        <div>=</div>
-                        <div class='value'>1.00</div>
-                        <input value='1' type="range" min="0" max="5" step="0.01" class="form-range w-75" id="a4">
-                    </div>
+                        <div class="d-flex justify-content-around">
+                            <div>a4 </div>
+                            <div>=</div>
+                            <div class='value'>1.00</div>
+                            <input value='1' type="range" min="0" max="5" step="0.01" class="form-range w-75" id="a4">
+                        </div>
 
-                    <div class="d-flex justify-content-around">
-                        <div>a5 </div>
-                        <div>=</div>
-                        <div class='value'>1.00</div>
-                        <input value='1' type="range" min="0" max="5" step="0.01" class="form-range w-75" id="a5">
-                    </div>
+                        <div class="d-flex justify-content-around">
+                            <div>a5 </div>
+                            <div>=</div>
+                            <div class='value'>1.00</div>
+                            <input value='1' type="range" min="0" max="5" step="0.01" class="form-range w-75" id="a5">
+                        </div>
 
-                    <div class="d-flex justify-content-around">
-                        <div>a6 </div>
-                        <div>=</div>
-                        <div class='value'>1.00</div>
-                        <input value='1' type="range" min="0" max="5" step="0.01" class="form-range w-75" id="a6">
-                    </div>
-                    <button class="btn btn-secondary mt-4 w-100 fea-btn" type="button">Calculate</button>
+                        <div class="d-flex justify-content-around">
+                            <div>a6 </div>
+                            <div>=</div>
+                            <div class='value'>1.00</div>
+                            <input value='1' type="range" min="0" max="5" step="0.01" class="form-range w-75" id="a6">
+                        </div>
+                        <button class="btn btn-secondary mt-4 w-100 fea-btn" type="button">Calculate</button>
                 </div>
             </div>
             <!-- toolbox -->
@@ -184,10 +199,12 @@
                     <h4 class="card-title">Location of your choice</h4>
                     <h5 class="card-subtitle mb-2 text-muted">What do you think of this project? Do you have some
                         favourite locations for parks?</h5>
-                    <p class="card-text">Parks and green spaces can also play a great role in improving the environment.
-                        The red area in the picture is where the temperature in Philadelphia is high, which is where the
-                        urban heat island effect is significant. Increasing the construction of parks in these areas can
-                        effectively alleviate the temperature imbalance.</p>
+                    <p class="card-text">You can click on the small squares in Philadelphia on this page to see if our
+                        analysis meets your preferred park locations.</p>
+                    <p class="card-text">
+                        Thank you for visiting! <a href="https://github.com/Zhen3r/WSOPB-MUSA509">More about this
+                            project.</a>
+                    </p>
                 </div>
             </div>
 
